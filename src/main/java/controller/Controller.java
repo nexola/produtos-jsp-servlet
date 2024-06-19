@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,12 +43,10 @@ public class Controller extends HttpServlet {
 	protected void products(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ArrayList<JavaBeans> list = dao.listProducts();
-		for (JavaBeans obj : list) {
-			System.out.println(obj.getId());
-			System.out.println(obj.getNome());
-			System.out.println(obj.getCodigo());
-			System.out.println(obj.getPreco());
-		}
+		
+		request.setAttribute("produtos", list);
+		RequestDispatcher rd = request.getRequestDispatcher("produtos.jsp");
+		rd.forward(request, response);
 	}
 
 	// Novo produto
