@@ -6,36 +6,72 @@ body {
 	font-family: 'Poppins', sans-serif;
 	font-size: 1em;
 	font-weight: 400;
+		display: flex;
+	flex-direction: column;
+	width: 600px;
+	margin: 0 auto;
 }
 
 h1 {
+	padding: 0;
 	color: #66bbff;
+	text-align: center;
 }
 
 .btn1 {
 	text-decoration: none;
 	padding: 8px 12px;
-	border: 2px solid #000;
+	border: 2px solid #1D7ECC;
 	border-radius: 4px;
-	background-color: #66bbff;
 	color: #fff;
 	font-size: 1.2em;
 	font-weight: 600;
 	cursor: pointer;
 	transition: 0.2s ease-in-out;
+	text-align: center;
 }
 
-.btn1:hover {
-	background-color: #3191DE;
+.btn-option {
+	text-align: center;
+	text-decoration: none;
+	padding: 4px 8px;
+	border: 2px solid #fff;
+	text-transform: uppercase;
+	color: #fff;
+	border-radius: 4px;
+	font-weight: 600;
+}
+
+.btn-edit, .btn1 {
+	background-color: #66bbff;
+}
+
+.btn-delete {
+	background-color: #F93839;
+}
+
+.btn-edit:hover, .btn1:hover {
 	transition: 0.2s ease-in-out;
 	border: 2px solid #fff;
+	background-color: #3191DE;
 }
+
+.btn-delete:hover {
+	background-color: #d51213
+}
+
+.options {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
 
 form {
 	display: flex;
 	flex-direction: column;
-	max-width: 60vh;
 	gap: 12px;
+	width: 600px;
+	margin: 0 auto;
 }
 
 input {
@@ -44,7 +80,7 @@ input {
 }
 
 #table {
-	margin-top: 30px;
+	margin-bottom: 30px;
 	border-collapse: collapse;
 }
 
@@ -59,4 +95,8 @@ input {
 #table td {
 	border: 1px solid #ddd;
 	padding: 10px;
+}
+
+tr:hover {
+	background-color: #F1F1F1;
 }

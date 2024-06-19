@@ -13,9 +13,9 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("produto
 <link rel="icon" href="images/favicon.png">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="lista">
 	<h1>Lista de produtos</h1>
-	<a href="novo.html" class="btn1">Novo produto</a>
+	
 	<table id="table">
 		<thead>
 			<tr>
@@ -23,7 +23,7 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("produto
 				<th>Nome</th>
 				<th>Código</th>
 				<th>Preço</th>
-				<th>Opções</th>
+				<th style="text-align:center">Opções</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -35,12 +35,17 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("produto
 				<td><%=product.getNome()%></td>
 				<td><%=product.getCodigo()%></td>
 				<td><%=product.getPreco()%></td>
-				<td><a href="select?id=<%=product.getId()%>" class="btn1">Editar</a></td>
+				<td class="options"><a href="select?id=<%=product.getId()%>" class="btn-edit btn-option">Editar</a>
+					<a href="javascript: confirmDeletion(<%=product.getId()%>)" class="btn-delete btn-option">Excluir</a></td>
 			</tr>
 			<%
 			}
 			%>
 		</tbody>
 	</table>
+	
+	<a href="novo.html" class="btn1">Novo produto</a>
+	
+	<script src="scripts/excluir.js"></script>
 </body>
 </html>
