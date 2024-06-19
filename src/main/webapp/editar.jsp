@@ -14,9 +14,9 @@ JavaBeans product = (JavaBeans) request.getAttribute("produto");
 </head>
 <body>
 	<h1>Editar produto</h1>
-	<form name="form-produto" class="form-produto" action="insert">
+	<form name="form-produto" class="form-produto" action="update">
 
-		<input type="text" name="id" disabled placeholder=<%= product.getId() %>> 
+		<input type="text" name="id" readonly value=<%= product.getId() %>> 
 		<input type="text" name="nome" value="<%=product.getNome()%>"> 
 		<input type="text" name="codigo" value="<%=product.getCodigo()%>">
 		<input type="text" name="preco" value="<%=product.getPreco()%>">

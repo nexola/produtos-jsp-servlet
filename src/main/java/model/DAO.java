@@ -74,10 +74,27 @@ public class DAO {
 			ps.setLong(1, product.getId());
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
+				product.setId(rs.getLong(1));
 				product.setCodigo(rs.getString(2));
 				product.setNome(rs.getString(3));
 				product.setPreco(rs.getDouble(4));
 			}	
+			conn.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public void updateProduct(JavaBeans product) {
+		String update = "update tb_produto set nome = ?, codigo = ?, preco = ? where id = ?;";
+		try {
+			Connection conn = connect();
+			PreparedStatement ps = conn.prepareStatement(update);
+			ps.setString(1, product.getNome());
+			ps.setString(2, product.getCodigo());
+			ps.setDouble(3, product.getPreco());
+			ps.setLong(4, product.getId());
+			ps.executeUpdate();
 			conn.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.DAO;
 import model.JavaBeans;
 
-@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select" })
+@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select", "/update" })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,6 +34,8 @@ public class Controller extends HttpServlet {
 			newProduct(request, response);
 		} else if (action.equals("/select")) {
 			listProduct(request, response);
+		} else if (action.equals("/update")) {
+			updateProduct(request, response);
 		} else {
 			response.sendRedirect("index.html");
 		}
@@ -67,6 +69,16 @@ public class Controller extends HttpServlet {
 		request.setAttribute("produto", produto);
 		RequestDispatcher rd = request.getRequestDispatcher("editar.jsp");
 		rd.forward(request, response);
+	}
+	
+	protected void updateProduct(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		produto.setId(Long.valueOf(request.getParameter("id")));
+		produto.setNome(request.getParameter("nome"));
+		produto.setCodigo(request.getParameter("codigo"));
+		produto.setPreco(Double.valueOf(request.getParameter("preco")));
+		dao.updateProduct(produto);
+		response.sendRedirect("main");
 	}
 
 }
