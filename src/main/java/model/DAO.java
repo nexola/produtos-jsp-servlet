@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class DAO {
 	private String driver = "org.postgresql.Driver";
-	private String url = "jdbc:postgresql://127.0.0.1:5432/db_produto?useTimezone=true&serverTimezone=UTC";
-	private String user = "postgres";
-	private String password = "1234";
+	private String url = "jdbc:postgresql://dpg-cpplcllds78s73eauvd0-a.oregon-postgres.render.com:5432/db_produto?user=postgresql&password=RcewdXjSTnrcdsG5E4cxVcykcVm6gtVa";
+	private String user = "postgresql";
+	private String password = "RcewdXjSTnrcdsG5E4cxVcykcVm6gtVa";
 
 	private Connection connect() {
 		Connection conn = null;
@@ -23,6 +23,7 @@ public class DAO {
 			return null;
 		}
 	}
+	
 
 	// Create
 	public void insertProduct(JavaBeans produto) {

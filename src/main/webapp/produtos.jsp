@@ -16,6 +16,10 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("produto
 <body id="lista">
 	<h1>Lista de produtos</h1>
 	
+	<% if (list.isEmpty()) { %>
+	<p>Comece adicionando algum item a lista!</p>
+	<% } else { %>
+	
 	<table id="table">
 		<thead>
 			<tr>
@@ -43,6 +47,8 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("produto
 			%>
 		</tbody>
 	</table>
+	
+	<% } %>
 	
 	<a href="novo.html" class="btn1">Novo produto</a>
 	
