@@ -9,7 +9,7 @@ function validarForm() {
 	let preco = formNewProduct.preco.value;
 
 	if (nome === "") {
-		alert("Preencha o campo nome")
+		alert("Preencha o campo produto")
 		formNewProduct.nome.focus();
 		return false
 	} else if (codigo === "") {
