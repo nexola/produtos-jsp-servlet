@@ -23,6 +23,7 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("produto
 				<th>Nome</th>
 				<th>Código</th>
 				<th>Preço</th>
+				<th>Opções</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -34,6 +35,7 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("produto
 				<td><%=product.getNome()%></td>
 				<td><%=product.getCodigo()%></td>
 				<td><%=product.getPreco()%></td>
+				<td><a href="select?id=<%=product.getId()%>" class="btn1">Editar</a></td>
 			</tr>
 			<%
 			}

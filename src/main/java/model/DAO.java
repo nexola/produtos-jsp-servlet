@@ -64,4 +64,23 @@ public class DAO {
 			return null;
 		}
 	}
+	
+	// Update
+	public void selectProduct(JavaBeans product) {
+		String select = "select * from tb_produto where id = ?;";
+		try {
+			Connection conn = connect();
+			PreparedStatement ps = conn.prepareStatement(select);
+			ps.setLong(1, product.getId());
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				product.setCodigo(rs.getString(2));
+				product.setNome(rs.getString(3));
+				product.setPreco(rs.getDouble(4));
+			}	
+			conn.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }

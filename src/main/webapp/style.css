@@ -31,6 +31,18 @@ h1 {
 	border: 2px solid #fff;
 }
 
+form {
+	display: flex;
+	flex-direction: column;
+	max-width: 60vh;
+	gap: 12px;
+}
+
+input {
+	padding: 8px;
+	font-weight: bold;
+}
+
 #table {
 	margin-top: 30px;
 	border-collapse: collapse;
