@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.DAO;
 import model.JavaBeans;
 
-@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select", "/update" })
+@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select", "/update", "/delete" })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -36,6 +36,8 @@ public class Controller extends HttpServlet {
 			listProduct(request, response);
 		} else if (action.equals("/update")) {
 			updateProduct(request, response);
+		} else if (action.equals("/delete")) {
+			deleteProduct(request, response);
 		} else {
 			response.sendRedirect("index.html");
 		}
@@ -78,6 +80,14 @@ public class Controller extends HttpServlet {
 		produto.setCodigo(request.getParameter("codigo"));
 		produto.setPreco(Double.valueOf(request.getParameter("preco")));
 		dao.updateProduct(produto);
+		response.sendRedirect("main");
+	}
+	
+	protected void deleteProduct(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String id = request.getParameter("id");
+		produto.setId(Long.valueOf(id));
+		dao.deleteProduct(produto.getId());
 		response.sendRedirect("main");
 	}
 

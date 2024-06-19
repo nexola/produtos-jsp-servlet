@@ -100,4 +100,19 @@ public class DAO {
 			System.out.println(e.getMessage());
 		}
 	}
+
+	// Delete
+	public void deleteProduct(Long id) {
+		String delete = "delete from tb_produto where id = ?";
+		
+		try {
+			Connection conn = connect();
+			PreparedStatement ps = conn.prepareStatement(delete);
+			ps.setLong(1, id);
+			ps.executeUpdate();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }
