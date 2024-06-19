@@ -3,6 +3,8 @@ package model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class DAO {
 	private String driver = "org.postgresql.Driver";
@@ -35,6 +37,31 @@ public class DAO {
 			conn.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+		}
+	}
+
+	// Read
+	public ArrayList<JavaBeans> listProducts() {
+		String read = "select * from tb_produto order by nome;";
+
+		try {
+			Connection conn = connect();
+			PreparedStatement ps = conn.prepareStatement(read);
+			ResultSet rs = ps.executeQuery();
+			ArrayList<JavaBeans> list = new ArrayList<>();
+			while (rs.next()) {
+				Long id = rs.getLong(1);
+				String nome = rs.getString(2);
+				String codigo = rs.getString(3);
+				Double preco = rs.getDouble(4);
+				JavaBeans produto = new JavaBeans(id, nome, codigo, preco);
+				list.add(produto);
+			}
+			conn.close();
+			return list;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
 		}
 	}
 }

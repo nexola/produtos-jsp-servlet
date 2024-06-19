@@ -1,12 +1,14 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import model.DAO;
 import model.JavaBeans;
 
@@ -39,7 +41,13 @@ public class Controller extends HttpServlet {
 	// Listar produtos
 	protected void products(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.sendRedirect("produtos.jsp");
+		ArrayList<JavaBeans> list = dao.listProducts();
+		for (JavaBeans obj : list) {
+			System.out.println(obj.getId());
+			System.out.println(obj.getNome());
+			System.out.println(obj.getCodigo());
+			System.out.println(obj.getPreco());
+		}
 	}
 
 	// Novo produto
