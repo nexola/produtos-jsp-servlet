@@ -48,6 +48,8 @@ public class Controller extends HttpServlet {
 		produto.setNome(request.getParameter("nome"));
 		produto.setCodigo(request.getParameter("codigo"));
 		produto.setPreco(Double.valueOf(request.getParameter("preco")));
+		dao.insertProduct(produto);
+		response.sendRedirect("main");
 	}
 
 }
