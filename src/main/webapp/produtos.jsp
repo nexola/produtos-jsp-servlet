@@ -2,9 +2,17 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="model.JavaBeans"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.text.NumberFormat"%>
+<%@ page import="java.util.Locale"%>
 <%
 ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("produtos");
 %>
+
+<%! public static String formatCurrency(String value) {
+    double number = Double.parseDouble(value);
+    NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+    return currencyFormatter.format(number);
+} %>
 <!DOCTYPE html>
 <html lang="">
 <head>
@@ -38,7 +46,7 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("produto
 				<td><%=product.getId()%></td>
 				<td><%=product.getNome()%></td>
 				<td><%=product.getCodigo()%></td>
-				<td><%=product.getPreco()%></td>
+				<td><%=formatCurrency(String.valueOf(product.getPreco()))%></td>
 				<td class="options"><a href="select?id=<%=product.getId()%>" class="btn-edit btn-option">Editar</a>
 					<a href="javascript: confirmDeletion(<%=product.getId()%>)" class="btn-delete btn-option">Excluir</a></td>
 			</tr>

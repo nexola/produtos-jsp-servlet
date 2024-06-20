@@ -7,14 +7,12 @@ function validarForm(e) {
 	let codigo = formNewProduct.codigo.value;
 	let preco = formNewProduct.preco.value;
 	
-	if (isNaN(+preco)) {
-		alert("O campo preço precisa de um valor numérico")
+	if (isNaN(+preco) || +preco <= 0) {
+		alert("O campo preço precisa de um valor numérico positivo")
 		formNewProduct.nome.focus();
 		e.preventDefault();
 		return false;
-	}
-
-	if (nome === "") {
+	} else if (nome === "") {
 		alert("Preencha o campo produto")
 		formNewProduct.nome.focus();
 		e.preventDefault();
@@ -31,7 +29,7 @@ function validarForm(e) {
 		return false;
 	} else {
 		document.forms["form-produto"].submit();
-	}
+	} 
 
 }
 
